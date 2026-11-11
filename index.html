@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Võ Quốc Tế (Tee) — Recruiter nghiên cứu thị trường</title>
+<meta name="description" content="Recruiter nghiên cứu thị trường tại TP.HCM với 4–5 năm kinh nghiệm, đã tuyển 5.000–10.000 đáp viên.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap&subset=vietnamese" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f7fb;
+    --bg-grad-1: rgba(79, 70, 229, 0.10);
+    --bg-grad-2: rgba(13, 148, 136, 0.10);
+    --surface: #ffffff;
+    --surface-2: #f1f3f9;
+    --border: #e2e6f0;
+    --text: #0f172a;
+    --muted: #4b5568;
+    --accent: #4f46e5;      /* chàm */
+    --accent-2: #0f766e;    /* xanh ngọc */
+    --accent-soft: rgba(79, 70, 229, 0.10);
+    --accent-2-soft: rgba(15, 118, 110, 0.10);
+    --on-accent: #ffffff;
+    --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.06);
+    --nav-bg: rgba(246, 247, 251, 0.82);
+    --radius: 18px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b1020;
+      --bg-grad-1: rgba(129, 140, 248, 0.14);
+      --bg-grad-2: rgba(45, 212, 191, 0.10);
+      --surface: #131a2e;
+      --surface-2: #19223a;
+      --border: #26304a;
+      --text: #e8ecf6;
+      --muted: #a9b3c8;
+      --accent: #a5b4fc;
+      --accent-2: #5eead4;
+      --accent-soft: rgba(165, 180, 252, 0.14);
+      --accent-2-soft: rgba(94, 234, 212, 0.12);
+      --on-accent: #0b1020;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.35);
+      --nav-bg: rgba(11, 16, 32, 0.82);
+    }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text);
+    background:
+      radial-gradient(900px 500px at 100% -10%, var(--bg-grad-1), transparent 60%),
+      radial-gradient(700px 500px at -10% 30%, var(--bg-grad-2), transparent 60%),
+      var(--bg);
+    background-attachment: scroll;
+    overflow-x: hidden;
+  }
+  @supports (overflow: clip) { body { overflow-x: clip; } }
+  img { max-width: 100%; display: block; }
+  a { color: var(--accent); }
+  h1, h2, h3 { line-height: 1.25; margin: 0; }
+  p { margin: 0 0 0.75em; }
+  ul { margin: 0; padding-left: 1.2em; }
+
+  .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+
+  /* ---------- Thanh điều hướng dính ---------- */
+  .topnav {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--nav-bg);
+    -webkit-backdrop-filter: saturate(160%) blur(12px);
+    backdrop-filter: saturate(160%) blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .topnav .wrap { display: flex; align-items: center; gap: 12px; padding-top: 6px; padding-bottom: 6px; }
+  .brand {
+    flex: none; display: inline-flex; align-items: center; min-height: 44px;
+    font-weight: 800; font-size: 1rem; text-decoration: none; color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .brand span { color: var(--accent); }
+  .pills {
+    flex: 1 1 auto; min-width: 0;
+    display: flex; gap: 6px;
+    overflow-x: auto; overscroll-behavior-x: contain;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+    margin: 0; padding: 0; list-style: none;
+    -webkit-mask-image: linear-gradient(to right, #000 85%, transparent);
+    mask-image: linear-gradient(to right, #000 85%, transparent);
+  }
+  .pills::-webkit-scrollbar { display: none; }
+  .pills a {
+    display: inline-flex; align-items: center; white-space: nowrap;
+    min-height: 44px; padding: 0 14px; border-radius: 999px;
+    font-size: 0.9375rem; font-weight: 500; text-decoration: none;
+    color: var(--muted);
+    transition: background-color .2s, color .2s;
+  }
+  .pills a:hover { color: var(--text); background: var(--surface-2); }
+  .pills a.active { color: var(--accent); background: var(--accent-soft); }
+  .pills li:last-child { padding-right: 24px; }
+  a:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- Phần chung ---------- */
+  section { scroll-margin-top: 72px; padding: 56px 0 8px; }
+  .eyebrow {
+    display: inline-block; font-size: 0.8125rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-2);
+    margin-bottom: 8px;
+  }
+  .section-title { font-size: clamp(1.5rem, 5vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 20px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: 22px;
+  }
+  .grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  .muted { color: var(--muted); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding-top: 36px; }
+  .hero-card {
+    display: grid; gap: 24px; justify-items: center; text-align: center;
+    padding: 32px 22px;
+    background:
+      linear-gradient(140deg, var(--accent-soft), transparent 45%),
+      linear-gradient(320deg, var(--accent-2-soft), transparent 50%),
+      var(--surface);
+  }
+  .avatar {
+    width: 168px; height: 168px; border-radius: 50%; overflow: hidden; flex: none;
+    border: 4px solid var(--surface);
+    box-shadow: 0 0 0 3px var(--accent), var(--shadow);
+    background: var(--surface-2);
+  }
+  .avatar img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: 55% 40%;
+    transform: scale(1.4);
+    transform-origin: 55% 45%;
+  }
+  .name { font-size: clamp(2.1rem, 9vw, 3.4rem); font-weight: 800; letter-spacing: -0.03em; }
+  .nick {
+    display: inline-block; margin-top: 6px;
+    font-size: 0.9375rem; font-weight: 500; color: var(--muted);
+  }
+  .role { font-weight: 600; color: var(--accent); margin: 14px 0 10px; font-size: 1.0625rem; }
+  .intro { font-size: 1.0625rem; max-width: 40em; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 4px 0 20px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px; border-radius: 999px; font-size: 0.9375rem; font-weight: 500;
+    background: var(--surface-2); border: 1px solid var(--border); color: var(--text);
+  }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 48px; padding: 0 22px; border-radius: 999px;
+    font: inherit; font-weight: 700; text-decoration: none; cursor: pointer;
+    border: 1px solid transparent;
+    transition: transform .15s ease, box-shadow .2s ease;
+  }
+  .btn-primary {
+    color: var(--on-accent);
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.25);
+  }
+  .btn-ghost { color: var(--text); background: var(--surface); border-color: var(--border); }
+  .btn:hover { transform: translateY(-1px); }
+
+  /* ---------- Con số ---------- */
+  .stat { display: flex; flex-direction: column; gap: 6px; position: relative; overflow: hidden; }
+  .stat::after {
+    content: ""; position: absolute; right: -40px; top: -40px; width: 120px; height: 120px; border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-soft), transparent 70%);
+    pointer-events: none;
+  }
+  .stat-value {
+    font-size: clamp(2rem, 8vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
+    color: var(--accent);
+    background: linear-gradient(120deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+  }
+  .stat-unit { font-size: 0.55em; font-weight: 700; letter-spacing: 0; }
+  .stat-label { font-weight: 600; }
+  .stat-note { color: var(--muted); font-size: 0.9375rem; margin: 0; }
+
+  /* ---------- Mình làm gì ---------- */
+  .icon {
+    width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+    background: var(--accent-soft); color: var(--accent); margin-bottom: 12px; flex: none;
+  }
+  .icon svg { width: 22px; height: 22px; }
+  .icon.teal { background: var(--accent-2-soft); color: var(--accent-2); }
+  .card h3 { font-size: 1.125rem; font-weight: 700; margin-bottom: 6px; }
+  .card p:last-child { margin-bottom: 0; }
+  .lead-card { margin-bottom: 14px; }
+  .lead-card p { font-size: 1.0625rem; }
+  .split { display: grid; gap: 14px; grid-template-columns: 1fr; margin-top: 14px; }
+  .badge {
+    display: inline-block; font-size: 0.8125rem; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+    background: var(--accent-soft); color: var(--accent); margin-bottom: 10px;
+  }
+  .badge.teal { background: var(--accent-2-soft); color: var(--accent-2); }
+
+  /* ---------- Khách hàng ---------- */
+  .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+  .tag {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px;
+    border-radius: 12px; font-weight: 700; font-size: 1rem;
+    background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow);
+  }
+  .tag.more { font-weight: 500; color: var(--muted); background: transparent; box-shadow: none; border-style: dashed; }
+
+  /* ---------- Dự án ---------- */
+  .project-head { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .project-head .chip { font-size: 0.875rem; }
+  .project-title { font-size: clamp(1.25rem, 4.5vw, 1.5rem); font-weight: 800; margin-bottom: 18px; letter-spacing: -0.01em; }
+  .steps { display: grid; gap: 14px; grid-template-columns: 1fr; counter-reset: step; }
+  .step { position: relative; padding-top: 18px; }
+  .step-num {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-2);
+    margin-bottom: 8px;
+  }
+  .step-num b {
+    display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%;
+    background: var(--accent-2-soft); color: var(--accent-2); font-size: 0.875rem; letter-spacing: 0;
+  }
+  .step ul li { margin-bottom: 6px; }
+  .step ul li:last-child { margin-bottom: 0; }
+  .result { background: linear-gradient(140deg, var(--accent-soft), var(--accent-2-soft)), var(--surface); }
+
+  /* ---------- Kỹ năng ---------- */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { position: relative; padding-left: 28px; margin-bottom: 10px; }
+  .checklist li:last-child { margin-bottom: 0; }
+  .checklist li::before {
+    content: ""; position: absolute; left: 0; top: 0.45em; width: 16px; height: 16px; border-radius: 50%;
+    background: var(--accent-2-soft);
+    box-shadow: inset 0 0 0 5px var(--accent-2-soft);
+    border: 2px solid var(--accent-2);
+  }
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 10px 0 14px; }
+  .flow .chip { font-weight: 700; }
+  .flow .arrow { color: var(--muted); font-weight: 700; }
+  .mini-stat { font-weight: 800; color: var(--accent); }
+
+  /* ---------- Liên hệ ---------- */
+  .contact-card {
+    text-align: center; padding: 32px 22px;
+    background:
+      radial-gradient(500px 240px at 50% 0%, var(--accent-soft), transparent 70%),
+      var(--surface);
+  }
+  .contact-card .section-title { margin-bottom: 8px; }
+  .contact-actions { display: grid; gap: 10px; grid-template-columns: 1fr; margin-top: 20px; }
+  .contact-actions .btn { width: 100%; }
+  .contact-info { margin-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 1rem; overflow-wrap: anywhere; }
+  .contact-info a { color: var(--text); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+  .contact-info a:hover { color: var(--accent); }
+
+  footer { padding: 40px 0 32px; text-align: center; color: var(--muted); font-size: 0.9375rem; }
+
+  /* ---------- Hiệu ứng (chỉ khi JS chạy) ---------- */
+  .js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .js .reveal.in { opacity: 1; transform: none; }
+
+  /* ---------- Máy tính bảng / máy tính ---------- */
+  @media (min-width: 640px) {
+    .wrap { padding: 0 24px; }
+    .grid-2, .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .split { grid-template-columns: repeat(2, 1fr); }
+    .contact-actions { grid-template-columns: repeat(3, 1fr); }
+    .card { padding: 26px; }
+  }
+  @media (min-width: 900px) {
+    section { padding-top: 80px; }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .hero { padding-top: 56px; }
+    .hero-card {
+      grid-template-columns: auto 1fr; justify-items: start; text-align: left;
+      gap: 40px; padding: 48px; align-items: center;
+    }
+    .avatar { width: 220px; height: 220px; }
+    .chips { justify-content: flex-start; }
+    .contact-card { padding: 48px; }
+    .contact-actions { max-width: 720px; margin-left: auto; margin-right: auto; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    .js .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav" aria-label="Điều hướng chính">
+  <div class="wrap">
+    <a class="brand" href="#gioi-thieu">Tee<span>.</span></a>
+    <ul class="pills">
+      <li><a href="#con-so">Con số</a></li>
+      <li><a href="#cong-viec">Công việc</a></li>
+      <li><a href="#khach-hang">Khách hàng</a></li>
+      <li><a href="#du-an">Dự án</a></li>
+      <li><a href="#quan-ly">Quản lý</a></li>
+      <li><a href="#ky-nang">Kỹ năng</a></li>
+      <li><a href="#lien-he">Liên hệ</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <!-- 1. Đầu trang -->
+  <section id="gioi-thieu" class="hero">
+    <div class="wrap">
+      <div class="card hero-card reveal">
+        <div class="avatar">
+          <img src="anh-dai-dien.webp" alt="Ảnh chân dung Võ Quốc Tế đeo kính, mặc áo hoodie đen, chụp ở biển" width="220" height="220">
+        </div>
+        <div>
+          <h1 class="name">Võ Quốc Tế</h1>
+          <span class="nick">Tee</span>
+          <p class="role">Recruiter nghiên cứu thị trường</p>
+          <p class="intro">Recruiter nghiên cứu thị trường tại TP.HCM với 4–5 năm kinh nghiệm, đã tuyển 5.000–10.000 đáp viên cho Ipsos, Kantar, Nielsen và nhiều công ty khác.</p>
+          <div class="chips">
+            <span class="chip">📍 TP. Hồ Chí Minh</span>
+            <span class="chip">Full-time &amp; freelance</span>
+          </div>
+          <a class="btn btn-primary" href="#lien-he">Liên hệ</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Con số nổi bật -->
+  <section id="con-so">
+    <div class="wrap">
+      <span class="eyebrow">Con số nổi bật</span>
+      <h2 class="section-title">Thành tích tính bằng con số</h2>
+      <div class="grid grid-3">
+        <div class="card stat reveal">
+          <div class="stat-value"><span class="count" data-to="4">4</span>–<span class="count" data-to="5">5</span> <span class="stat-unit">năm</span></div>
+          <div class="stat-label">Kinh nghiệm</div>
+          <p class="stat-note">Tuyển đáp viên cho ngành nghiên cứu thị trường.</p>
+        </div>
+        <div class="card stat reveal">
+          <div class="stat-value"><span class="count" data-to="5000">5.000</span>–<span class="count" data-to="10000">10.000</span></div>
+          <div class="stat-label">Đáp viên đã tuyển</div>
+          <p class="stat-note">Tổng cộng trong 4–5 năm.</p>
+        </div>
+        <div class="card stat reveal">
+          <div class="stat-value">~<span class="count" data-to="90">90</span>%</div>
+          <div class="stat-label">Đạt chuẩn và đúng hẹn</div>
+          <p class="stat-note">Đáp viên đạt chuẩn và có mặt đúng hẹn.</p>
+        </div>
+        <div class="card stat reveal">
+          <div class="stat-value"><span class="count" data-to="100">100</span>–<span class="count" data-to="200">200</span></div>
+          <div class="stat-label">Đáp viên mỗi tháng</div>
+          <p class="stat-note">Mức trung bình hằng tháng.</p>
+        </div>
+        <div class="card stat reveal">
+          <div class="stat-value"><span class="count" data-to="20">20</span>–<span class="count" data-to="30">30</span> <span class="stat-unit">dự án/tháng</span></div>
+          <div class="stat-label">Dự án mỗi tháng</div>
+          <p class="stat-note">Cao điểm có tháng 40–50 dự án.</p>
+        </div>
+        <div class="card stat reveal">
+          <div class="stat-value"><span class="count" data-to="10">10</span>+ <span class="stat-unit">đáp viên</span></div>
+          <div class="stat-label">Trong 1–2 ngày</div>
+          <p class="stat-note">Khi dự án gấp — deadline hầu như luôn gấp.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Mình làm gì -->
+  <section id="cong-viec">
+    <div class="wrap">
+      <span class="eyebrow">Mình làm gì</span>
+      <h2 class="section-title">Tìm đúng người cho từng nghiên cứu</h2>
+      <div class="card lead-card reveal">
+        <p>Recruiter trong ngành nghiên cứu thị trường, chuyên tuyển đáp viên: tìm đúng người tham gia theo tiêu chí mà công ty đặt ra.</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <h3>Khảo sát theo tiêu chí</h3>
+          <p class="muted">Tìm đúng người tham gia theo tiêu chí khảo sát mà công ty đặt ra.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>Thảo luận nhóm</h3>
+          <p class="muted">Tuyển người tham gia thảo luận nhóm (focus group).</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></svg></div>
+          <h3>Test sản phẩm</h3>
+          <p class="muted">Tuyển người tham gia test sản phẩm.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3>Phỏng vấn sâu</h3>
+          <p class="muted">Tuyển đáp viên phỏng vấn sâu (IDI).</p>
+        </div>
+      </div>
+      <div class="split">
+        <div class="card reveal">
+          <span class="badge">Full-time</span>
+          <h3>Masan</h3>
+          <p class="muted">Chức danh Recruiter, công việc tương tự.</p>
+        </div>
+        <div class="card reveal">
+          <span class="badge teal">Freelance</span>
+          <h3>Nhiều công ty nghiên cứu thị trường</h3>
+          <p class="muted">Tuyển đáp viên tự do cho nhiều công ty trong ngành.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Đã đồng hành cùng -->
+  <section id="khach-hang">
+    <div class="wrap">
+      <span class="eyebrow">Đã đồng hành cùng</span>
+      <h2 class="section-title">Khách hàng freelance tiêu biểu</h2>
+      <div class="tags reveal">
+        <span class="tag">Ipsos</span>
+        <span class="tag">Kantar</span>
+        <span class="tag">Nielsen</span>
+        <span class="tag">Cimigo</span>
+        <span class="tag">Acorn</span>
+        <span class="tag">Intage</span>
+        <span class="tag">Axis</span>
+        <span class="tag">Milestone</span>
+        <span class="tag more">và nhiều công ty khác</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Dự án tiêu biểu -->
+  <section id="du-an">
+    <div class="wrap">
+      <span class="eyebrow">Dự án tiêu biểu</span>
+      <h2 class="section-title">Nghiên cứu người mua xe máy mới</h2>
+      <div class="project-head reveal">
+        <span class="chip">Ngành hàng: Xe máy</span>
+        <span class="chip">Khách hàng: giấu tên (bảo mật)</span>
+        <span class="chip">Dự án định kỳ</span>
+      </div>
+      <div class="steps">
+        <div class="card step reveal">
+          <div class="step-num"><b>1</b> Bối cảnh</div>
+          <ul>
+            <li>Mỗi đợt cần tuyển <strong>hơn 50 đáp viên</strong>, chia cho nhiều recruiter; mình tự đảm nhận 20–30 người.</li>
+            <li>Đối tượng: người <strong>vừa mua xe máy mới gần đây</strong>.</li>
+            <li>Lặp lại liên tục: cứ 2–3 tháng lại có 1–2 dự án, mỗi dự án tuyển trong khoảng 1–2 tuần.</li>
+          </ul>
+        </div>
+        <div class="card step reveal">
+          <div class="step-num"><b>2</b> Cái khó</div>
+          <p>Đối tượng phải mua xe trong khoảng thời gian rất gần, nên luôn phải tìm người mới, không dùng lại được nguồn cũ.</p>
+        </div>
+        <div class="card step reveal">
+          <div class="step-num"><b>3</b> Cách làm — 3 kênh tìm người</div>
+          <ul>
+            <li>Lọc từ danh sách khách hàng do công ty cung cấp.</li>
+            <li>Tìm qua các hội nhóm, group: nhờ admin giới thiệu, xin số liên hệ rồi gọi điện mời.</li>
+            <li>Tự tìm và tiếp cận trực tiếp (“bắt nóng”) tại nơi đối tượng hay lui tới: đại lý xe máy, bãi giữ xe…</li>
+          </ul>
+        </div>
+        <div class="card step result reveal">
+          <div class="step-num"><b>4</b> Kết quả</div>
+          <p>Thường <strong>vượt chỉ tiêu</strong> và tuyển bù cho phần của recruiter khác, nhờ đó được giao thêm dự án.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Kinh nghiệm quản lý -->
+  <section id="quan-ly">
+    <div class="wrap">
+      <span class="eyebrow">Kinh nghiệm quản lý</span>
+      <h2 class="section-title">Supervisor (Sup) part-time</h2>
+      <div class="grid grid-3">
+        <div class="card stat reveal">
+          <div class="stat-value"><span class="count" data-to="10">10</span>+</div>
+          <div class="stat-label">Recruiter được quản lý</div>
+          <p class="stat-note">Thường quản lý hơn 10 recruiter.</p>
+        </div>
+        <div class="card stat reveal">
+          <div class="stat-value">~<span class="count" data-to="3">3</span> <span class="stat-unit">tháng</span></div>
+          <div class="stat-label">Thời gian làm Sup</div>
+          <p class="stat-note">Bắt đầu khoảng tháng 8/2026.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Công việc của Sup</h3>
+          <ul class="checklist">
+            <li>Tự tìm recruiter, giao bớt dự án xuống cho người khác làm</li>
+            <li>Brief dự án cho recruiter</li>
+            <li>Kèm recruiter làm 1–2 bài đầu trước khi họ tự ra thực tế (on field)</li>
+            <li>Tuyển nhân sự part-time cho công ty và trực tiếp quản lý đội part-time</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Kỹ năng và công cụ -->
+  <section id="ky-nang">
+    <div class="wrap">
+      <span class="eyebrow">Kỹ năng và công cụ</span>
+      <h2 class="section-title">Những gì giúp mình tuyển nhanh và đúng</h2>
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <h3>Kỹ năng mềm</h3>
+          <ul class="checklist">
+            <li>Thuyết phục người lạ, mời tham gia qua điện thoại</li>
+            <li>Sàng lọc đáp viên “chuyên nghiệp” (đi khảo sát nhiều lần) hoặc khai gian</li>
+            <li>Xây dựng và giữ quan hệ với admin các group</li>
+            <li>Xử lý đáp viên bùng hẹn, trễ hẹn</li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <div class="icon teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><path d="M10.5 7.5L6.5 16.5"/><path d="M13.5 7.5l4 9"/><path d="M8 19h8"/></svg></div>
+          <h3>Mạng lưới</h3>
+          <ul class="checklist">
+            <li><strong>1 cộng tác viên chính</strong>, lúc cao điểm có thêm 3–4 người phụ để đăng bài, tìm người</li>
+            <li>Đăng tuyển trên khoảng <strong>10–20 group</strong> Zalo và Facebook</li>
+            <li>Đáp viên cũ trở thành người giới thiệu, tạo nguồn giới thiệu chất lượng và ngày càng mở rộng</li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div>
+          <h3>Hệ thống quản lý đáp viên riêng</h3>
+          <p class="muted">Một người em học AI xây giúp.</p>
+          <div class="flow" aria-label="Luồng dữ liệu: Telegram sang Google Sheets sang website">
+            <span class="chip">Telegram</span><span class="arrow" aria-hidden="true">→</span>
+            <span class="chip">Google Sheets</span><span class="arrow" aria-hidden="true">→</span>
+            <span class="chip">Website</span>
+          </div>
+          <p>Đang quản lý <span class="mini-stat"><span class="count" data-to="1000">1.000</span>+ đáp viên</span> (đã nhập cả data cũ).</p>
+          <p class="muted">Theo dõi lúc đáp viên đăng ký, ngày giờ đi hội thảo, ai sẽ đi hội thảo ngày mai, số đáp viên đã mời — tiết kiệm thời gian quản lý đáp viên và lịch hẹn.</p>
+        </div>
+      </div>
+      <div class="card reveal" style="margin-top:14px">
+        <h3>Công cụ hằng ngày</h3>
+        <div class="flow">
+          <span class="chip">Google Sheets — lưu trữ dữ liệu</span>
+          <span class="chip">Zalo — Zalo cá nhân và các group</span>
+          <span class="chip">Facebook — đăng bài trong group</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Liên hệ (riêng tư) -->
+  <section id="lien-he">
+    <div class="wrap">
+      <div data-rieng-tu>
+        <div class="card contact-card reveal">
+          <span class="eyebrow">Liên hệ</span>
+          <h2 class="section-title">Cần tuyển đáp viên? Nhắn mình nhé</h2>
+          <p class="muted">Làm việc chủ yếu tại TP. Hồ Chí Minh.</p>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="https://zalo.me/0969449437" target="_blank" rel="noopener">Nhắn Zalo</a>
+            <a class="btn btn-ghost" href="mailto:voquocte4272@gmail.com">Gửi email</a>
+          </div>
+          <div class="contact-info">
+            <div>Email: <a href="mailto:voquocte4272@gmail.com">voquocte4272@gmail.com</a></div>          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- 9. Chân trang -->
+<footer>
+  <div class="wrap">© 2026 Võ Quốc Tế (Tee)</div>
+</footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!('IntersectionObserver' in window)) return; // nội dung vẫn hiển thị đầy đủ
+
+  // Định dạng số kiểu Việt Nam: dấu chấm phân cách hàng nghìn
+  function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+
+  // Đánh dấu mục đang xem trên thanh điều hướng
+  var links = document.querySelectorAll('.pills a');
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  var navObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (a) { a.classList.remove('active'); });
+      var a = map[e.target.id];
+      if (a) {
+        a.classList.add('active');
+        var bar = a.closest('.pills');
+        var left = a.offsetLeft - bar.clientWidth / 2 + a.clientWidth / 2;
+        bar.scrollTo({ left: left, behavior: reduce ? 'auto' : 'smooth' });
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  document.querySelectorAll('main section[id]').forEach(function (s) { navObs.observe(s); });
+
+  if (reduce) return; // giữ nguyên giá trị cuối, không hiệu ứng
+
+  document.documentElement.classList.add('js');
+
+  // Thẻ hiện dần
+  var revObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); revObs.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  document.querySelectorAll('.reveal').forEach(function (el) { revObs.observe(el); });
+
+  // Số đếm tăng dần
+  function run(el) {
+    var to = parseInt(el.getAttribute('data-to'), 10);
+    var dur = 1400, start = null;
+    function step(t) {
+      if (start === null) start = t;
+      var p = Math.min((t - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(Math.round(to * eased));
+      if (p < 1) requestAnimationFrame(step); else el.textContent = fmt(to);
+    }
+    el.textContent = '0';
+    requestAnimationFrame(step);
+  }
+  var cntObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { run(e.target); cntObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.count').forEach(function (el) { cntObs.observe(el); });
+})();
+</script>
+</body>
+</html>
